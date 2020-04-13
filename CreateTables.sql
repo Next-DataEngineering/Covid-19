@@ -23,7 +23,9 @@ Pessoa         varchar(50) NOT NULL,
 DATA           datetime    NOT NULL,
 situacao_id    int         NOT NULL,
 _created       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-_updated       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+_updated       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+FOREIGN KEY (situacao_id),
+FOREIGN KEY (Pessoa)
 );
 
 
@@ -34,13 +36,19 @@ lat       double(7, 5)  NULL,
 lng       double(7, 5)  NULL,
 situacao  int           NOT NULL,
 _created  DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
-_updated  DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+_updated  DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+FOREIGN KEY (situacao_id),
+FOREIGN KEY (Pessoa)
 );
 
 CREATE TABLE NextDataEngineering.LimitesDeslocamento(
 Pessoa    varchar(50)    NOT NULL,
 lat1      double(7, 5)   NULL,
 lng1      double(7, 5)   NULL,
-raio      double(7, 5)   NULL
+raio      double(7, 5)   NULL,
+FOREIGN KEY (pessoa)
 );
+
+
+
 
