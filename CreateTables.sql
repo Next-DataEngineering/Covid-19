@@ -9,7 +9,7 @@ PRIMARY KEY (id)
 );
 
 CREATE TABLE NextDataEngineering.Pessoa(
-id            int         NOT NULL AUTO_INCREMENT,
+id            varchar(64) NOT NULL,
 Pessoa        varchar(50) NOT NULL,
 situacao_id   int         NOT NULL,
 _created      DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -20,7 +20,7 @@ FOREIGN KEY (situacao_id) REFERENCES Situacao(id) ON UPDATE CASCADE
 
 
 CREATE TABLE NextDataEngineering.HistoricoSituacao(
-pessoa_id      int         NOT null,
+pessoa_id      varchar(64) NOT null,
 DATA           datetime    NOT NULL,
 situacao_id    int         NOT NULL,
 _created       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -31,7 +31,7 @@ FOREIGN KEY (pessoa_id)   REFERENCES Pessoa(id)               ON UPDATE cascade
 
 
 CREATE TABLE NextDataEngineering.RegistroLocalizacao (
-pessoa_id      int           NOT null,
+pessoa_id      varchar(64)   NOT null,
 DATA           datetime      NULL,
 lat            double(7, 5)  NULL,
 lng            double(7, 5)  NULL,
@@ -43,7 +43,7 @@ FOREIGN KEY (pessoa_id)   REFERENCES Pessoa(id)               ON UPDATE cascade
 );
 
 CREATE TABLE NextDataEngineering.LimitesDeslocamento(
-pessoa_id      int            NOT null,
+pessoa_id      varchar(64)    NOT null,
 lat1           double(7, 5)   NULL,
 lng1           double(7, 5)   NULL,
 raio           double(7, 5)   NULL,
