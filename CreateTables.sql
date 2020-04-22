@@ -10,7 +10,6 @@ PRIMARY KEY (id)
 
 CREATE TABLE NextDataEngineering.Pessoa(
 id            varchar(64) NOT NULL,
-Pessoa        varchar(50) NOT NULL,
 situacao_id   int         NOT NULL,
 _created      DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
 _updated      DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
