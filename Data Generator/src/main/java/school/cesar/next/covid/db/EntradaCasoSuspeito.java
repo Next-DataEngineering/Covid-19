@@ -1,6 +1,8 @@
 package school.cesar.next.covid.db;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 
 public class EntradaCasoSuspeito {
@@ -10,7 +12,26 @@ public class EntradaCasoSuspeito {
 		this.connection = connection;
 	}
 	
-	public void adicionar(Pessoa pessoa, Date dataSuspeita) {
-		
+	public void adicionarPessoa(Pessoa pessoa) {
+		String id = pessoa.id;
+		try{
+			String queryPessoa = "insert into NextDataEngineering.Pessoa (id, situacao_id) Values (" + id + ", 2);";
+			Statement adiconar = connection.createStatement();
+			adiconar.executeQuery(queryPessoa);
+		}catch(SQLException sqle){
+			sqle.printStackTrace();
+	   }
+	}
+
+	public void adicionarHistorico(Pessoa pessoa, Date dataSuspeita) {
+		String id = pessoa.id;
+		Date data = dataSuspeita;		
+		try{
+			String querySituacao = "insert into NextDataEngineering.HistoricoSituacao (pessoa_id, Data, situacao_id) Values (" + id + ", " + data + ", 2);";
+			Statement adiconar = connection.createStatement();
+			adiconar.executeQuery(querySituacao);
+		}catch(SQLException sqle){
+			sqle.printStackTrace();
+	   }		
 	}
 }
