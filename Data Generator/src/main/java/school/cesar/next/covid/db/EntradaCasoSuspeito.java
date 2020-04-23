@@ -12,10 +12,10 @@ public class EntradaCasoSuspeito {
 		this.connection = connection;
 	}
 	
-	public void adicionarPessoa(Pessoa pessoa) {
+	public void adicionarPessoa(Pessoa pessoa, String situacao) {
 		String id = pessoa.id;
 		try{
-			String queryPessoa = "insert into NextDataEngineering.Pessoa (id, situacao_id) Values (" + id + ", 2);";
+			String queryPessoa = "insert into NextDataEngineering.Pessoa (id, situacao_id) Values (" + id + ", " + situacao + ", );";
 			Statement adiconar = connection.createStatement();
 			adiconar.executeQuery(queryPessoa);
 		}catch(SQLException sqle){

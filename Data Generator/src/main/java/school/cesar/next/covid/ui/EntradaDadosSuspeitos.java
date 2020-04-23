@@ -27,7 +27,7 @@ public class EntradaDadosSuspeitos {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date date = sdf.parse(txtdata);
 			System.out.println(date);
-			new EntradaCasoSuspeito(null).adicionar(pessoa, date);
+			new EntradaCasoSuspeito(null).adicionarPessoa(pessoa, "2");
 		} catch (ParseException e) {
 			throw new RuntimeException(e);
 		}
