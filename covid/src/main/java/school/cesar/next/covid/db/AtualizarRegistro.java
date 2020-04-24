@@ -11,11 +11,11 @@ import java.util.Date;
 
 
 public class AtualizarRegistro {
-    private Connection connection;
+    private ConexaoLocal conexaoLocal = new ConexaoLocal();
+    private Connection connection = conexaoLocal.getconnection();
 
-    public void conexaoBanco() throws SQLException {
-		this.connection = DriverManager.getConnection(
-				"jdbc:mysql://localhost:3306/ NextDataEngineering?serverTimezone=UTC","root","inserirsenhalocal");
+    public AtualizarRegistro() throws SQLException {
+
 
 	}
 

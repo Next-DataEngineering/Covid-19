@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class EntradaPosicaoPessoa {
-    private Connection connection;
+    private ConexaoLocal conexaoLocal = new ConexaoLocal();
+    private Connection connection = conexaoLocal.getconnection();
 
     public EntradaPosicaoPessoa() throws SQLException{
-        this.connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/ NextDataEngineering?serverTimezone=UTC","root","MSpoloaquatico$02");
+
     }
 
     public void adicionarRegistroLocalizacao(Pessoa pessoa, Date dataSuspeita, Double lat, Double lng, String hashgeo, Integer hashdata, Integer situacao) {
