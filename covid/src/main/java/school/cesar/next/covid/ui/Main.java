@@ -14,6 +14,7 @@ public class Main {
 			System.out.println("2 - para exibir detalhes pessoa");
 			System.out.println("3 - para inserir a localização de uma pessoa manualmente");
 			System.out.println("4 - para ler o id das pessoas");
+            System.out.println("5 - para atualizar a situação de uma pessoa");
 			int opcao = sc.nextInt();
 			switch (opcao) {
 				case 0:
@@ -28,6 +29,9 @@ public class Main {
 				case 4:
 					new LerPessoas(sc).run();
 					break;
+                case 5:
+                    new EntradaAtualizacaoSituacao(sc).run();
+                    break;
 			}
 		}
 	}
