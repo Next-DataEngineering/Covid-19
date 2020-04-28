@@ -27,6 +27,7 @@ public class EntradaPosicaoPessoa {
             insertRegistroLocalizaca.setInt(6, hashdata);
             insertRegistroLocalizaca.setInt(7, situacao);
             insertRegistroLocalizaca.executeUpdate();
+            insertRegistroLocalizaca.close();
         }catch(SQLException sqle){
             sqle.printStackTrace();
         }

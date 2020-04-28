@@ -16,8 +16,8 @@ public class DbDummyDataProcessor implements DummyDataProcessor {
 	public DbDummyDataProcessor(String userId, Connection connection) throws SQLException {
 		this.userId = userId;
 		this.connection = connection;
-		this.insertStatement = this.connection.prepareStatement("insert into HistoricoLocalizacao (pessoa_id, lat, lng, hashlocal, data, hashdata, situacao) values (?, ?, ?, ?, ?, ?, ?)");
-		
+		this.insertStatement = this.connection.prepareStatement("insert into registrolocalizacao (pessoa_id, lat, lng, hashgeo, data, hashdata, situacao_id) values (?, ?, ?, ?, ?, ?, ?)");
+
 	}
 	
 	
@@ -31,7 +31,7 @@ public class DbDummyDataProcessor implements DummyDataProcessor {
 		this.insertStatement.setDate(5, new java.sql.Date(data.date.getTime()));
 		long hashHorario = data.date.getTime() / CINCO_MINUTOS;
 		this.insertStatement.setLong(6, hashHorario);
-		this.insertStatement.setInt(7, 0); //Saudavel
+		this.insertStatement.setInt(7, 1); //Saudavel
 		this.insertStatement.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace();

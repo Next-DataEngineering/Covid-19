@@ -8,7 +8,7 @@ public class ConexaoLocal extends ConexaoBanco {
     private Connection connection;
     private String url = "jdbc:mysql://localhost:3306/NextDataEngineering?serverTimezone=UTC";
     private String user = "root";
-    private String password = "MSpoloaquatico$02";
+    private String password = "inserirsenhalocal";
 
     public ConexaoLocal(){
        this.connection = connection;

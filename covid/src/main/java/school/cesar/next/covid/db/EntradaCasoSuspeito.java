@@ -17,6 +17,7 @@ public class EntradaCasoSuspeito{
 			insertPessoa.setString(1, id);
 			insertPessoa.setInt(2, 2);
 			insertPessoa.executeUpdate();
+			insertPessoa.close();
 		}catch(SQLException sqle){
 			sqle.printStackTrace();
 		}
@@ -31,6 +32,7 @@ public class EntradaCasoSuspeito{
 			insertHistorico.setDate(2, (java.sql.Date) data);
 			insertHistorico.setInt(3, 2);
 			insertHistorico.executeUpdate();
+			insertHistorico.close();
 		}catch(SQLException sqle){
 			sqle.printStackTrace();
 		}

@@ -20,6 +20,7 @@ public class BuscarPessoas extends ConexaoLocal {
 
                 System.out.println(id);
             }
+            lerPessoa.close();
 
         }catch(SQLException sqle){
             sqle.printStackTrace();

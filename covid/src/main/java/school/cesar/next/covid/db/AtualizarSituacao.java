@@ -22,6 +22,8 @@ public class AtualizarSituacao {
             ResultSet resultado = selectPessoa.executeQuery();
             resultado.first();
             Integer situacao = resultado.getInt(1);
+            selectPessoa.close();
+            resultado.close();
             return situacao;
         }catch(SQLException sqle){
             sqle.printStackTrace();
@@ -38,6 +40,7 @@ public class AtualizarSituacao {
                 updateSituacao.setInt(1, situacao_id);
                 updateSituacao.setString(2, id);
                 updateSituacao.executeUpdate();
+                updateSituacao.close();
 
             } catch(SQLException sqle){
             sqle.printStackTrace();}
@@ -55,6 +58,7 @@ public class AtualizarSituacao {
                 updateHistorico.setDate(2, sqlDate);
                 updateHistorico.setInt(3, situacao_id);
                 updateHistorico.executeUpdate();
+            updateHistorico.close();
 
         }catch(SQLException sqle){
             sqle.printStackTrace();

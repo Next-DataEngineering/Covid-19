@@ -28,6 +28,7 @@ public class AtualizarRegistro {
             resultado.first();
             Integer situacao = resultado.getInt(0);
             return situacao;
+
         }catch(SQLException sqle){
             sqle.printStackTrace();
             return 0;
@@ -58,6 +59,7 @@ public class AtualizarRegistro {
             PreparedStatement updateSituacao = connection.prepareStatement("UPDATE NextDataEngineering.Pessoa SET situacao_id = 4 WHERE id=(?)");
             updateSituacao.setString(1, id);
             updateSituacao.executeUpdate(update);
+            updateSituacao.close();
         }catch(SQLException sqle){
             sqle.printStackTrace();
        }
