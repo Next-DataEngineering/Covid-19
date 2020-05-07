@@ -1,3 +1,11 @@
+ Select pessoa_id from registrolocalizacao where a_processar=1;
+ Select * from registrolocalizacao;
+ Select pessoa_id, hashdata from registrolocalizacao where pessoa_id in (
+            Select pessoa_id from registrolocalizacao where a_processar=1);
+
+#sql alchemly - python
+
+
 /*SELECT hashdata FROM registrolocalizacao WHERE a_processar = 1;
 
 /*SELECT hashdata 
