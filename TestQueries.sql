@@ -1,16 +1,16 @@
-SELECT hashdata FROM registrolocalizacao WHERE a_processar = 1;
+/*SELECT hashdata FROM registrolocalizacao WHERE a_processar = 1;
 
 /*SELECT hashdata 
     FROM registrolocalizacao 
     WHERE hashdata > any(SELECT hashdata 
                          FROM registrolocalizacao 
-                         WHERE a_processar = 1 group by hashdata);*/
+                         WHERE a_processar = 1 group by hashdata);
 
 #seleciona os ids que foram modificados
 Select pessoa_id from registrolocalizacao where a_processar=1;
 
 #seleciona todas as linhas dos ids que foram modificados
-Select * from registrolocalizacao where pessoa_id in (Select pessoa_id from registrolocalizacao where a_processar=1);
+Select * from registrolocalizacao where pessoa_id in (Select pessoa_id from registrolocalizacao where a_processar=1);*/
 
 /*For pessoa_id in (Select pessoa_id from registrolocalizacao where a_processar=1)
 If hashdata > SELECT hashdata FROM registrolocalizacao WHERE a_processar = 1 and pessoa_id=pessoa_id
@@ -21,42 +21,34 @@ DELIMITER $$
 Create procedure atualizacaoRegistro()
 	BEGIN
     DECLARE Pessoa varchar(255);
-    DECLARE Hdata INT;
-    DECLARE curPessoaId 
+    DECLARE DataCruzamento INT;
+    DECLARE curPessoaSuspeita 
 		CURSOR FOR 
-			Select pessoa_id FROM registrolocalizacao WHERE a_processar=1;
-	DECLARE curHashdata
-		CURSOR FOR
-			SELECT hashdata FROM registrolocalizacao WHERE a_processar = 1;
+			Select pessoa_id, hashdata FROM registrolocalizacao WHERE a_processar=1;#pessoas que necessitam ser mudadas e data de cruzmento
+	
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     
+	OPEN curPessoaSuspeita;
     
-	OPEN curPessoaId;
-    OPEN curHashdata;
-    
-    getPessoaID: LOOP
-		FETCH curPessoaId into Pessoa;
-        FETCH curHashdata into DataCruzamento; 
-        
+    atualizarSitucacao: LOOP
+		FETCH curPessoaSuspeita into Pessoa, DataCruzamento;
+       
         Select hashdata from registrolocalizacao where pessoaID=Pessoa;
+        
         IF hashdata > DataCruzamento THEN 
-        Select * from registrolocaliacao where pessoa_id=Pessoa and hashdata=hashdata;
-        SET situacao_id=2;
+        Update registrolocalizacao
+        SET situacao_id=2
+		WHERE pessoa_id=Pessoa and hashdata=hashdata;
         END IF;
         
-    END LOOP getPessoaID;
+    END LOOP atualizarSitucacao;
 	
-	/*DECLARE ids = (pessoa_id in (Select pessoa_id FROM registrolocalizacao WHERE a_processar=1);
-		WHILE (pessoa_id in (Select pessoa_id FROM registrolocalizacao WHERE a_processar=1)) DO
-			IF (hashdata > (SELECT hashdata FROM registrolocalizacao WHERE a_processar = 1)) THEN
-				SET situacao_id=2;
-			END IF;
-		END WHILE;*/
-	
-    CLOSE curPessoaId;
+    CLOSE curPessoaSuspeita;
     CLOSE curHashdata;
 END$$
 DELIMITER ;
+
+EXECUTE atualizacaoRegistro;
 
 
 #exemplo cursor
@@ -93,7 +85,7 @@ END$$
 DELIMITER ;*/
 
 
-
+/*
 #seleciona as linhas das pessoas cuja situação foi modificada mas que contém datas ainda não modificadas
 Select * from (Select * from registrolocalizacao where pessoa_id in (Select pessoa_id from registrolocalizacao where a_processar=1)) as tab where a_processar=0;
 
@@ -116,4 +108,39 @@ Select pessoa_id from (SELECT pessoa_id
 
 
 Select * from registrolocalizacao where pessoa_id='7f4078ec-8ae1-11ea-bc55-0242ac130003';
-Select * from registrolocalizacao where pessoa_id='1ccccf90-8fa4-11ea-bc55-0242ac130003';
+Select * from registrolocalizacao where pessoa_id='1ccccf90-8fa4-11ea-bc55-0242ac130003';*/
+
+
+/*
+SELECT hashdata FROM registrolocalizacao WHERE a_processar = 1;
+
+SELECT hashdata 
+    FROM registrolocalizacao 
+    WHERE hashdata > any(SELECT hashdata 
+                         FROM registrolocalizacao 
+                         WHERE a_processar = 1 group by hashdata);
+
+Select pessoa_id from registrolocalizacao where a_processar=1;
+
+Select * from registrolocalizacao where pessoa_id in (Select pessoa_id from registrolocalizacao where a_processar=1);
+
+Select * from (Select * from registrolocalizacao where pessoa_id in (Select pessoa_id from registrolocalizacao where a_processar=1)) as tab where a_processar=0;
+
+Select * from registrolocalizacao where pessoa_id='7f4078ec-8ae1-11ea-bc55-0242ac130003' and hashdata > 
+(select hashdata from registrolocalizacao where pessoa_id='7f4078ec-8ae1-11ea-bc55-0242ac130003' and a_processar=1);
+
+Select pessoa_id from (SELECT pessoa_id 
+    FROM registrolocalizacao 
+    WHERE hashdata > any(SELECT hashdata 
+                         FROM registrolocalizacao 
+                         WHERE a_processar = 1 group by hashdata)) as tab
+                         Where pessoa_id in (Select pessoa_id from registrolocalizacao where a_processar=1);
+
+
+Select * from registrolocalizacao where pessoa_id='7f4078ec-8ae1-11ea-bc55-0242ac130003';
+Select * from registrolocalizacao where pessoa_id='1ccccf90-8fa4-11ea-bc55-0242ac130003';*/
+
+
+
+
+#'7f4078ec-8ae1-11ea-bc55-0242ac130003'
