@@ -34,7 +34,7 @@ DELIMITER ;
 
 
 DELIMITER $$
-Create procedure atualizacaoRegistro()
+Create procedure teste()
 	BEGIN
     
     DECLARE PessoaVerificar varchar(255);
@@ -67,5 +67,16 @@ END$$
 DELIMITER ;
 
 
+SELECT * FROM registrolocalizacao TAB1
+INNER JOIN registrolocalizacao TAB2 ON TAB1.PESSOA_ID = TAB2.PESSOA_ID
+WHERE TAB1.a_processar = 1 AND TAB2.HASHDATA > TAB1.HASHDATA;
+
+#AND TAB2.HASHDATA > TAB1.HASHDATA;
 
 
+UPDATE registrolocalizacao TAB1
+INNER JOIN registrolocalizacao TAB2 ON TAB1.PESSOA_ID = TAB2.PESSOA_ID
+SET TAB2.situacao_id = 2
+WHERE TAB1.a_processar = 1 AND TAB2.HASHDATA > TAB1.HASHDATA;
+
+select * from registrolocalizacao;
