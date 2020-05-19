@@ -18,7 +18,7 @@ Also the Window Sliding Technique was used to achieve two key points:
 
 All the data used was dummy data to assure that no privacy laws were broken.
 
-In the main directory you can see the queries for the creation of the database as well as the stored procedured created to track and update the person situation as needed.
+In the main directory you can see the queries for the creation of the database as well as the stored procedured created to track and update the person situation as needed, as well as a query with the tables created for unit testing.
 
 The Data generator folder contains an old version of the JAVA implementation of the database and dummy data generation.
 
