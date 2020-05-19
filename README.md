@@ -17,3 +17,13 @@ Also the Window Sliding Technique was used to achieve two key points:
 
 
 All the data used was dummy data to assure that no privacy laws were broken.
+
+In the main directory you can see the queries for the creation of the database as well as the stored procedured created to track and update the person situation as needed.
+
+The Data generator folder contains an old version of the JAVA implementation of the database and dummy data generation.
+
+And the Covid folder is the most recent version of the implementation. Everything was built using Object-oriented programming.
+
+
+Finally this project was merged with a ORM implementation version which you can find here:
+
