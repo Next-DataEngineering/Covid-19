@@ -27,3 +27,4 @@ And the Covid folder is the most recent version of the implementation. Everythin
 
 Finally this project was merged with a ORM implementation version which you can find here:
 
+https://github.com/GustavoLiraRB/NextDataEngineering/tree/master/Next
